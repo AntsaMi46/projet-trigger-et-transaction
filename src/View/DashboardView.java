@@ -199,7 +199,17 @@ public class DashboardView extends JFrame {
         side.add(Box.createVerticalStrut(20));
         side.add(buildOperationForm());
 
-        return side;
+        JScrollPane scrollSide=new JScrollPane(side);
+        scrollSide.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+        scrollSide.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
+        scrollSide.setBorder(null);
+        scrollSide.getVerticalScrollBar().setUnitIncrement(12);
+
+        JPanel wrapper = new JPanel(new BorderLayout());
+        wrapper.setBackground(Theme.BLEU_MOYEN);
+        wrapper.setPreferredSize(new Dimension(300, 0));
+        wrapper.add(scrollSide, BorderLayout.CENTER);
+        return wrapper;
     }
 
     private JPanel buildTransfertForm() {
